@@ -6,4 +6,9 @@ class User < ActiveRecord::Base
   has_friendship
   has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  acts_as_commontator
+
+  validates_presence_of :firstname, :username, :lastname
+  validates :username, format: {with: /\A[a-zA-Z\d]+\z/, :message => "can only contain letters and numbers."}
+  validates :firstname, :lastname, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
 end
