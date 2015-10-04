@@ -1,0 +1,15 @@
+Dashboard
+%table.table
+  %thead
+    %th User
+    %th Activity
+    %th Post/Comment
+  %tbody
+    - @activities.each do |activity|
+      %tr
+        %td= link_to activity.owner.username , activity.owner.username
+        - if activity.trackable_type == 'Post'
+          %td added / updated Post
+        - if activity.trackable_type == 'Comment'
+          %td added / updated Comment
+        %td= link_to activity.trackable.content, activity.trackable.content

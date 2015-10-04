@@ -1,0 +1,14 @@
+.mid-form
+  %table.table
+    %thead
+      %th Name
+      %th Actions
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.firstname
+          %td
+            - if friend(user)
+              = label_tag 'Connected'
+            - else
+              = link_to 'Send Request', send_friend_request_user_path(user), class: 'btn btn-primary', method: :post

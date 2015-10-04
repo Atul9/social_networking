@@ -1,0 +1,7 @@
+.mid-form
+  = simple_form_for @post, html: {class: 'form-horizontal'} do |f|
+    = f.input :content, as: :string, disabled: true
+    = f.input :accessible_by, collection: ['Friends', 'Public'], include_blank: false, disabled: true
+    = f.submit 'Save', class: 'btn btn-primary'
+    = link_to 'Cancel', posts_path,class: 'btn btn-info'
+

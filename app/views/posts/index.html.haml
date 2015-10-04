@@ -1,0 +1,17 @@
+= link_to 'Create New Post', new_post_path, class: 'btn btn-primary'
+.mid-form
+  .col-md-10
+    %center
+      %h3 All Posts
+    %br
+    - @posts.each do |post|
+      = post.content
+      - post.pictures.each do |pic|
+        = image_tag pic.collage.url(:thumb)
+      %br
+      = 'Posted on'
+      = post.created_at.strftime('%d-%m-%Y')
+      - if post.user_id == current_user.id
+        = link_to 'Edit / View', edit_post_path(post), class: 'btn btn-primary btn-sm'
+        = link_to 'Delete', post_path(post), class: 'btn btn-danger btn-sm', method: :delete
+      = commontator_thread(post)

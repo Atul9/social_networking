@@ -1,0 +1,9 @@
+.col-md-5
+  = image_tag @user.avatar.url(:medium)
+.col-md-5
+  %h3 View User
+  = simple_form_for @user, html: {class: 'form-horizontal'} do |f|
+    = f.input :username, as: :string, disabled: true
+    = f.input :firstname, as: :string, disabled: true
+    = f.input :lastname, as: :string, disabled: true
+    = link_to 'Back', root_path, class: 'btn btn-info'

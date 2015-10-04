@@ -1,0 +1,10 @@
+.mid-form
+  %table.table
+    %thead
+      %th Name
+      %th Actions
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td= user.firstname
+          %td= link_to 'Accept Request', accept_friend_request_user_path(user), class: 'btn btn-primary', method: :post

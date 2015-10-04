@@ -1,0 +1,8 @@
+.mid-form
+  %table.table
+    %thead
+      %th Name
+    %tbody
+      - @friends.each do |user|
+        %tr
+          %td= user.firstname

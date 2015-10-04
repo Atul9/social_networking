@@ -1,0 +1,10 @@
+.mid-form
+  = simple_nested_form_for @post, html: {class: 'form-horizontal'} do |f|
+    = f.input :content, as: :string
+    = f.input :accessible_by, collection: ['Friends', 'Public'], include_blank: false
+    = f.simple_fields_for :pictures, @post.pictures do |pic|
+      = pic.input :collage, as: :file
+    = f.link_to_add 'Add Picture', :pictures, id: 'add_picture', class: 'btn btn-primary'
+    = f.submit 'Save', class: 'btn btn-primary'
+    = f.submit 'Cancel', class: 'btn btn-info'
+
