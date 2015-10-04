@@ -30,6 +30,10 @@ gem 'activeadmin', github: 'activeadmin'
 gem 'paperclip'
 gem 'has_friendship'
 gem 'quiet_assets'
+gem 'commontator'
+gem 'nested_form'
+gem 'public_activity'
+gem 'puma'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
