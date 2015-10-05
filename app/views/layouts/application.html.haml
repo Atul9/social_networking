@@ -9,6 +9,8 @@
   %body
     .wrapper
       = render 'header'
+      .flash_messages.global
+        = render 'flash_messages'
       .container-fluid
         .row-fluid
           = yield
