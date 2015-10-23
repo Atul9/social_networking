@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
   acts_as_commontator
 
+  has_one :picture, as: :imageable
+  accepts_nested_attributes_for :picture, allow_destroy: true
   validates_presence_of :firstname, :username, :lastname
   validates :username, format: {with: /\A[a-zA-Z\d]+\z/, :message => "can only contain letters and numbers."}
   validates :firstname, :lastname, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }
