@@ -18,24 +18,7 @@ class UsersController < ApplicationController
   end
 
   def people
-    @users = current_user.friends.count.zero? ? User.where.not(id: current_user.id) :
-                                                User.where.not(id: [current_user.id, current_user.friends.pluck(:id)])
-  end
-
-  def send_friend_request
-    send_to = User.find(params[:id])
-    current_user.friend_request(send_to)
-    redirect_to people_user_path
-  end
-
-  def pending_friend_requests
-    @users = current_user.requested_friends
-  end
-
-  def accept_friend_request
-    sent_from = User.find(params[:id])
-    current_user.accept_request(sent_from)
-    redirect_to people_user_path
+    @users = User.where.not(id: [current_user.id, current_user.friends.pluck(:id)])
   end
 
   def show
@@ -47,5 +30,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:firstname, :username, :lastname, :avatar, :email, :password, :confirmation_password)
   end
-
 end
